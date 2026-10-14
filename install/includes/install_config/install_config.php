@@ -28,9 +28,17 @@ $req_allow_url_fopen = '1';		// 1 = on
 
 // Array of PHP modules to check
 global $required_php_modules;
+
+$mysql_available = isExtensionInstalled('mysqli');
+$postgres_available = isExtensionInstalled('pgsql');
+
 $required_php_modules = [
 	'php-curl' 		=> ['condition' => isExtensionInstalled('curl')],
-	'php-mysql' 	=> ['condition' => isExtensionInstalled('mysqli')],
+	(
+		$mysql_available
+		? 'php-mysql'
+		: ($postgres_available ? 'php-pgsql' : 'php-mysql || php-pgsql')
+	) 			=> ['condition' => $mysql_available || $postgres_available],
 	'php-mbstring' 		=> ['condition' => isExtensionInstalled('mbstring')],
 	'php-xml' 		=> ['condition' => isExtensionInstalled('xml')],
 	'php-zip' 		=> ['condition' => isExtensionInstalled('zip')],

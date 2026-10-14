@@ -122,7 +122,7 @@ if (!file_exists('.lock') && !file_exists($db_config_path . 'config.php') && !fi
 								<!-- Tab 2: Pre-Checks -->
 								<div class="tab-pane fade" id="precheck" role="tabpanel" aria-labelledby="precheck-tab">
 									<div class="row justify-content-center" style="margin-top: 1rem;">
-										<div class="col-md-5 mx-auto">
+										<div class="col-md-6 mx-auto">
 											<p class="border-bottom mb-2"><b><?= __("PHP Modules"); ?></b></p>
 											<?php
 											// Initialize the tracker
